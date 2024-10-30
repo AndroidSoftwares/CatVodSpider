@@ -11,7 +11,10 @@ import org.json.JSONObject;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.regex.Matcher;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -23,13 +26,13 @@ public class YiSo extends Ali {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("User-Agent", "Mozilla/5.0 (Linux; Android 12; V2049A Build/SP1A.210812.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/103.0.5060.129 Mobile Safari/537.36");
         headers.put("Referer", "https://yiso.fun/");
-        headers.put("Cookie", "satoken=2854cb58-3884-473b-84c4-34161f67a409");
+        headers.put("Cookie", "satoken=88f71cb7-f76b-443d-a3cb-8a5a0e13cfb4");
         return headers;
     }
 
     @Override
     public String searchContent(String key, boolean quick) throws Exception {
-        String json = OkHttp.string("https://yiso.fun/api/search?name=" + URLEncoder.encode(key) + "&pageNo=1&from=ali", getHeaders());
+        String json = OkHttp.string("https://yiso.fun/api/search?name=" + URLEncoder.encode(key) + "&pageNo=1", getHeaders());
         JSONArray array = new JSONObject(json).getJSONObject("data").getJSONArray("list");
         ArrayList<Vod> list = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
@@ -39,7 +42,7 @@ public class YiSo extends Ali {
             vod.setVodId(decrypt(array.getJSONObject(i).getString("url")));
             vod.setVodName(name);
             vod.setVodRemarks(remark);
-            vod.setVodPic("https://inews.gtimg.com/newsapp_bt/0/13263837859/1000");
+            vod.setVodPic("");
             list.add(vod);
         }
         return Result.string(list);
@@ -56,4 +59,10 @@ public class YiSo extends Ali {
             return "";
         }
     }
+    @Override
+    public String detailContent(List<String> ids) throws Exception {
+        if (pattern.matcher(ids.get(0)).find()) return super.detailContent(ids);
+        return "";
+    }
+
 }

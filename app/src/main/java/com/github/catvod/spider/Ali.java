@@ -32,7 +32,11 @@ public class Ali extends Spider {
     public String detailContent(List<String> ids) throws Exception {
         String id = ids.get(0).trim();
         Matcher matcher = pattern.matcher(id);
-        return matcher.find() ? Result.string(parseVod(matcher, id)) : "";
+        Vod vod = new Vod();
+        vod.setVodPlayFrom(TextUtils.join("$$$", ids));
+        vod.setVodPlayUrl(TextUtils.join("$$$", ids));
+        return Result.string(vod);
+//        return matcher.find() ? Result.string(parseVod(matcher, id)) : "";
     }
 
     @Override

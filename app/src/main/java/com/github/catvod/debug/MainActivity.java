@@ -8,6 +8,11 @@ import com.github.catvod.R;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.spider.Init;
 import com.github.catvod.spider.PTT;
+import com.github.catvod.spider.PanSearch;
+import com.github.catvod.spider.PanSou;
+import com.github.catvod.spider.UpYun;
+import com.github.catvod.spider.YiSo;
+import com.github.catvod.spider.Zhaozy;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
@@ -46,8 +51,13 @@ public class MainActivity extends Activity {
     private void initSpider() {
         try {
             Init.init(getApplicationContext());
-            spider = new PTT();
-            spider.init(this, "");
+//            spider = new PTT();
+//            spider = new YiSo();
+//            spider = new PanSearch();
+//            spider = new UpYun();
+            spider = new PanSou();
+//            spider = new Zhaozy();
+//            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -82,7 +92,10 @@ public class MainActivity extends Activity {
 
     public void detailContent() {
         try {
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("434686")));
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("434686")));
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("g1iFr6KNHku91")));//
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://www.alipan.com/s/bnZqa9iBN7V")));
+
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -98,7 +111,8 @@ public class MainActivity extends Activity {
 
     public void searchContent() {
         try {
-            Logger.t("searchContent").d(spider.searchContent("我的人间烟火", false));
+//            Logger.t("searchContent").d(spider.searchContent("我的人间烟火", false));
+            Logger.t("searchContent").d(spider.searchContent("你好", false, "2"));
         } catch (Throwable e) {
             e.printStackTrace();
         }

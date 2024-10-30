@@ -36,11 +36,13 @@ public class PanSearch extends Ali {
     }
 
     @Override
-    public String searchContent(String key, boolean quick) throws Exception {
+    public String searchContent(String key, boolean quick, String pg) throws Exception {
         String html = OkHttp.string(URL, getHeader());
         String data = Jsoup.parse(html).select("script[id=__NEXT_DATA__]").get(0).data();
         String buildId = new JSONObject(data).getString("buildId");
-        String url = URL + "_next/data/" + buildId + "/search.json?keyword=" + URLEncoder.encode(key) + "&pan=aliyundrive";
+        int page = 0;
+        if (pg.equals("1")) page = Integer.parseInt(pg) * 10; else page = (page + 1) * 10;
+        String url = URL + "_next/data/" + buildId + "/search.json?keyword=" + URLEncoder.encode(key) + "&offset=" + page  /*+ "&pan=aliyundrive"*/;
         String result = OkHttp.string(url, getSearchHeader());
         JSONArray array = new JSONObject(result).getJSONObject("pageProps").getJSONObject("data").getJSONArray("data");
         List<Vod> list = new ArrayList<>();
@@ -57,4 +59,10 @@ public class PanSearch extends Ali {
         }
         return Result.string(list);
     }
+    @Override
+    public String detailContent(List<String> ids) throws Exception {
+        if (pattern.matcher(ids.get(0)).find()) return super.detailContent(ids);
+        return "";
+    }
+
 }

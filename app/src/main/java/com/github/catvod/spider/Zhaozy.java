@@ -76,7 +76,7 @@ public class Zhaozy extends Ali {
             if (!name.contains(key)) continue;
             String remark = element.select("div.news_text a p").text().split("\\|")[1].split("：")[1];
             Vod vod = new Vod();
-            vod.setVodPic("https://inews.gtimg.com/newsapp_bt/0/13263837859/1000");
+            vod.setVodPic("");
             vod.setVodId(matcher.group(1));
             vod.setVodRemarks(remark);
             vod.setVodName(name);

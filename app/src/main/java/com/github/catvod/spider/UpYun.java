@@ -44,7 +44,7 @@ public class UpYun extends Ali {
             JSONObject jsonObj = jsonArray.getJSONObject(i);
             String id = jsonObj.optString("page_url");
             String name = jsonObj.optString("title");
-            String pic = "https://pic.imgdb.cn/item/65767399c458853aeff8a6a0.webp";
+            String pic = "";
             String remark = jsonObj.optString("insert_time");
             if (name.contains(key)) list.add(new Vod(id, name, pic, remark));
         }

@@ -6,6 +6,7 @@ import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.Util;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -57,6 +58,7 @@ public class PanSou extends Ali {
 
     private String searchContent(String key, String pg) {
         String url = siteUrl + "/search?k=" + URLEncoder.encode(key) + "&page=" + pg + "&s=0&t=-1";
+        Document test = Jsoup.parse(OkHttp.string(url, getHeader()));
         Elements items = Jsoup.parse(OkHttp.string(url, getHeader())).select("van-row > a");
         List<Vod> list = new ArrayList<>();
         for (Element item : items) {
@@ -64,7 +66,7 @@ public class PanSou extends Ali {
             if (!title.contains(key)) continue;
             Vod vod = new Vod();
             vod.setVodId(item.attr("href"));
-            vod.setVodPic("https://inews.gtimg.com/newsapp_bt/0/13263837859/1000");
+            vod.setVodPic("");
             vod.setVodName(title);
             list.add(vod);
         }
