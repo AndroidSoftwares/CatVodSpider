@@ -1,5 +1,7 @@
 package com.github.catvod.spider;
 
+import android.text.TextUtils;
+
 import com.github.catvod.bean.Result;
 import com.github.catvod.bean.Vod;
 import com.github.catvod.net.OkHttp;
@@ -36,6 +38,11 @@ public class PanSearch extends Ali {
     }
 
     @Override
+    public String searchContent(String key, boolean quick) throws Exception {
+        return searchContent(key, quick, "1");
+    }
+
+    @Override
     public String searchContent(String key, boolean quick, String pg) throws Exception {
         String html = OkHttp.string(URL, getHeader());
         String data = Jsoup.parse(html).select("script[id=__NEXT_DATA__]").get(0).data();
@@ -53,16 +60,22 @@ public class PanSearch extends Ali {
             if (split.length == 0) continue;
             String vodId = Jsoup.parse(content).select("a").attr("href");
             String name = split[0].replaceAll("</?[^>]+>", "");
-            String remark = item.optString("time");
+            String remark = item.optString("pan") + " " + item.optString("time");
             String pic = item.optString("image");
-            list.add(new Vod(vodId, name, pic, remark));
+            Vod vod = new Vod(vodId, name, pic, remark);
+            vod.setVodContent(content);
+            list.add(vod);
         }
         return Result.string(list);
     }
     @Override
     public String detailContent(List<String> ids) throws Exception {
-        if (pattern.matcher(ids.get(0)).find()) return super.detailContent(ids);
-        return "";
+        Vod vod = new Vod();
+        vod.setVodPlayFrom(TextUtils.join("$$$", ids));
+        vod.setVodPlayUrl(TextUtils.join("$$$", ids));
+        return Result.string(vod);
+//        if (pattern.matcher(ids.get(0)).find()) return super.detailContent(ids);
+//        return "";
     }
 
 }

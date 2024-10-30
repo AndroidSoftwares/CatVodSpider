@@ -1,5 +1,6 @@
 package com.github.catvod.spider;
 
+import android.text.TextUtils;
 import android.util.Base64;
 
 import com.github.catvod.bean.Result;
@@ -31,14 +32,14 @@ public class YiSo extends Ali {
     }
 
     @Override
-    public String searchContent(String key, boolean quick) throws Exception {
-        String json = OkHttp.string("https://yiso.fun/api/search?name=" + URLEncoder.encode(key) + "&pageNo=1", getHeaders());
+    public String searchContent(String key, boolean quick, String pg) throws Exception {
+        String json = OkHttp.string("https://yiso.fun/api/search?name=" + URLEncoder.encode(key) + "&pageNo=" + pg, getHeaders());
         JSONArray array = new JSONObject(json).getJSONObject("data").getJSONArray("list");
         ArrayList<Vod> list = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
             Vod vod = new Vod();
             String name = array.getJSONObject(i).getJSONArray("fileInfos").getJSONObject(0).getString("fileName");
-            String remark = array.getJSONObject(i).getString("gmtCreate");
+            String remark = array.getJSONObject(i).getString("from") + " " + array.getJSONObject(i).getString("gmtCreate");
             vod.setVodId(decrypt(array.getJSONObject(i).getString("url")));
             vod.setVodName(name);
             vod.setVodRemarks(remark);
@@ -46,6 +47,11 @@ public class YiSo extends Ali {
             list.add(vod);
         }
         return Result.string(list);
+    }
+
+    @Override
+    public String searchContent(String key, boolean quick) throws Exception {
+        return searchContent(key, quick, "1");
     }
 
     public String decrypt(String str) {
@@ -61,8 +67,12 @@ public class YiSo extends Ali {
     }
     @Override
     public String detailContent(List<String> ids) throws Exception {
-        if (pattern.matcher(ids.get(0)).find()) return super.detailContent(ids);
-        return "";
+        Vod vod = new Vod();
+        vod.setVodPlayFrom(TextUtils.join("$$$", ids));
+        vod.setVodPlayUrl(TextUtils.join("$$$", ids));
+        return Result.string(vod);
+//        if (pattern.matcher(ids.get(0)).find()) return super.detailContent(ids);
+//        return "";
     }
 
 }
