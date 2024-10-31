@@ -8,6 +8,8 @@ import com.github.catvod.R;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.spider.Init;
 import com.github.catvod.spider.HunHePan;
+import com.github.catvod.spider.MiSou;
+import com.github.catvod.spider.PiKa;
 import com.github.catvod.spider.YiSo;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -53,6 +55,8 @@ public class MainActivity extends Activity {
 //            spider = new UpYun();
 //            spider = new PanSou();
             spider = new HunHePan();
+            spider = new MiSou();
+            spider = new PiKa();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -110,7 +114,7 @@ public class MainActivity extends Activity {
     public void searchContent() {
         try {
 //            Logger.t("searchContent").d(spider.searchContent("我的人间烟火", false));
-            Logger.t("searchContent").d(spider.searchContent("漫威", false, "2"));
+            Logger.t("searchContent").d(spider.searchContent("漫威", false, "1"));
         } catch (Throwable e) {
             e.printStackTrace();
         }
