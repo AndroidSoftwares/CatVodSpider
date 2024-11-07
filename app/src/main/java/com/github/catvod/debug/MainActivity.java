@@ -6,6 +6,8 @@ import android.widget.Button;
 
 import com.github.catvod.R;
 import com.github.catvod.crawler.Spider;
+import com.github.catvod.spider.CLXF;
+import com.github.catvod.spider.CiLiKu;
 import com.github.catvod.spider.Init;
 import com.github.catvod.spider.HunHePan;
 import com.github.catvod.spider.MiSou;
@@ -57,6 +59,8 @@ public class MainActivity extends Activity {
             spider = new HunHePan();
             spider = new MiSou();
             spider = new PiKa();
+            spider = new CiLiKu();
+            spider = new CLXF();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -96,7 +100,8 @@ public class MainActivity extends Activity {
         try {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("434686")));
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("g1iFr6KNHku91")));//
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/0a9ea215a7a0")));
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/0a9ea215a7a0")));
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("md5hash=531f39dcf4afe8664f910af1541a718a52ab390683ed25c5c232ad27997887e6&sjk=2")));
 
         } catch (Throwable e) {
             e.printStackTrace();
