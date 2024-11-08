@@ -11,6 +11,7 @@ import com.github.catvod.spider.CiLiKu;
 import com.github.catvod.spider.Init;
 import com.github.catvod.spider.HunHePan;
 import com.github.catvod.spider.MiSou;
+import com.github.catvod.spider.PanSearch;
 import com.github.catvod.spider.PiKa;
 import com.github.catvod.spider.YiSo;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -53,14 +54,14 @@ public class MainActivity extends Activity {
             Init.init(getApplicationContext());
 //            spider = new PTT();
 //            spider = new YiSo();
-//            spider = new PanSearch();
 //            spider = new UpYun();
 //            spider = new PanSou();
             spider = new HunHePan();
             spider = new MiSou();
-            spider = new PiKa();
             spider = new CiLiKu();
             spider = new CLXF();
+            spider = new PiKa();
+            spider = new PanSearch();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
