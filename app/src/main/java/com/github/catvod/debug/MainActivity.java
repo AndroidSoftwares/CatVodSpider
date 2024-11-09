@@ -13,6 +13,7 @@ import com.github.catvod.spider.HunHePan;
 import com.github.catvod.spider.MiSou;
 import com.github.catvod.spider.PanSearch;
 import com.github.catvod.spider.PiKa;
+import com.github.catvod.spider.ReBang;
 import com.github.catvod.spider.YiSo;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -62,6 +63,7 @@ public class MainActivity extends Activity {
             spider = new CLXF();
             spider = new PiKa();
             spider = new PanSearch();
+            spider = new ReBang();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -91,7 +93,8 @@ public class MainActivity extends Activity {
             extend.put("c", "19");
             extend.put("year", "2024");
 //            Logger.t("categoryContent").d(spider.categoryContent("3", "2", true, extend));
-            Logger.t("categoryContent").d(spider.categoryContent("14", "2", true, extend));
+//            Logger.t("categoryContent").d(spider.categoryContent("14", "2", true, extend));
+            Logger.t("categoryContent").d(spider.categoryContent("baidu?cache=true", "1", true, extend));
         } catch (Throwable e) {
             e.printStackTrace();
         }

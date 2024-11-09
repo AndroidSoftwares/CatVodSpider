@@ -15,7 +15,9 @@ import com.github.catvod.spider.Init;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -199,5 +201,12 @@ public class Util {
         } catch (Exception e) {
             return "";
         }
+    }
+
+    public static String convertTimestampToDate(long timestamp) {
+        Date date = new Date(timestamp);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = dateFormat.format(date);
+        return dateString;
     }
 }
