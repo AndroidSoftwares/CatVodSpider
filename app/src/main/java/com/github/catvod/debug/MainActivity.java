@@ -10,11 +10,14 @@ import com.github.catvod.spider.CLXF;
 import com.github.catvod.spider.CiLiKu;
 import com.github.catvod.spider.Init;
 import com.github.catvod.spider.HunHePan;
+import com.github.catvod.spider.LWCL;
 import com.github.catvod.spider.MiSou;
 import com.github.catvod.spider.PanSearch;
 import com.github.catvod.spider.PiKa;
 import com.github.catvod.spider.ReBang;
+import com.github.catvod.spider.WJCL;
 import com.github.catvod.spider.YiSo;
+import com.github.catvod.spider.Yiove;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
@@ -61,9 +64,12 @@ public class MainActivity extends Activity {
             spider = new MiSou();
             spider = new CiLiKu();
             spider = new CLXF();
+            spider = new ReBang();
             spider = new PiKa();
             spider = new PanSearch();
-            spider = new ReBang();
+            spider = new WJCL();
+            spider = new LWCL();
+            spider = new Yiove();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -105,7 +111,8 @@ public class MainActivity extends Activity {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("434686")));
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("g1iFr6KNHku91")));//
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/0a9ea215a7a0")));
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("md5hash=531f39dcf4afe8664f910af1541a718a52ab390683ed25c5c232ad27997887e6&sjk=2")));
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("md5hash=531f39dcf4afe8664f910af1541a718a52ab390683ed25c5c232ad27997887e6&sjk=2")));
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/!iyQa")));
 
         } catch (Throwable e) {
             e.printStackTrace();
@@ -122,8 +129,8 @@ public class MainActivity extends Activity {
 
     public void searchContent() {
         try {
-//            Logger.t("searchContent").d(spider.searchContent("我的人间烟火", false));
-            Logger.t("searchContent").d(spider.searchContent("漫威", false, "1"));
+            Logger.t("searchContent").d(spider.searchContent("仙逆", false));
+//            Logger.t("searchContent").d(spider.searchContent("漫威", false, "1"));
         } catch (Throwable e) {
             e.printStackTrace();
         }
