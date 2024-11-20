@@ -64,8 +64,9 @@ public class CLXF extends Spider {
             List<String> vodItems = new ArrayList<>();
             for (Element a : aList) {
                 String episodeUrl = a.attr("href");
-                String episodeName = a.text();
+                String episodeName = a.text().replace("\uD83E\uDDF2 ", "");
                 if (!episodeUrl.toLowerCase().startsWith("magnet")) continue;
+                if (!episodeUrl.contains("btih")) episodeUrl = episodeUrl.replace("urn:", "urn:btih:");
                 vodItems.add(episodeName + "$" + episodeUrl);
             }
             if (!vodItems.isEmpty()) {
