@@ -6,6 +6,8 @@ import android.widget.Button;
 
 import com.github.catvod.R;
 import com.github.catvod.crawler.Spider;
+import com.github.catvod.spider.CLPH;
+import com.github.catvod.spider.CLWQCL;
 import com.github.catvod.spider.CLXF;
 import com.github.catvod.spider.CiLiKu;
 import com.github.catvod.spider.Init;
@@ -14,11 +16,10 @@ import com.github.catvod.spider.LWCL;
 import com.github.catvod.spider.MiSou;
 import com.github.catvod.spider.PanSearch;
 import com.github.catvod.spider.PiKa;
-import com.github.catvod.spider.RBYQ;
+import com.github.catvod.spider.WPRBYQ;
 import com.github.catvod.spider.ReBang;
 import com.github.catvod.spider.WJCL;
 import com.github.catvod.spider.Wogg;
-import com.github.catvod.spider.YiSo;
 import com.github.catvod.spider.Yiove;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -73,7 +74,9 @@ public class MainActivity extends Activity {
             spider = new LWCL();
             spider = new Yiove();
             spider = new Wogg();
-            spider = new RBYQ();
+            spider = new WPRBYQ();
+            spider = new CLWQCL();
+            spider = new CLPH();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -118,7 +121,8 @@ public class MainActivity extends Activity {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("md5hash=531f39dcf4afe8664f910af1541a718a52ab390683ed25c5c232ad27997887e6&sjk=2")));
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/!iyQa")));
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/voddetail/81270.html")));//玩偶哥哥
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("cm3q9ogxc3bg8bdpv8mgyq8k6")));//肉不要钱
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("cm3q9ogxc3bg8bdpv8mgyq8k6")));//肉不要钱
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("http://www.xpiaohua.com/column/juqing/20241119/66623.html")));//新飘花
 
         } catch (Throwable e) {
             e.printStackTrace();
@@ -135,7 +139,7 @@ public class MainActivity extends Activity {
 
     public void searchContent() {
         try {
-            Logger.t("searchContent").d(spider.searchContent("仙逆", false));
+            Logger.t("searchContent").d(spider.searchContent("最后", false));
 //            Logger.t("searchContent").d(spider.searchContent("漫威", false, "1"));
         } catch (Throwable e) {
             e.printStackTrace();

@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * 肉不要钱
  */
-public class RBYQ extends Spider {
+public class WPRBYQ extends Spider {
 
     private final String siteUrl = "https://roubuyaoqian.com";
 
