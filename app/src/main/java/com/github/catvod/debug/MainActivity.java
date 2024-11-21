@@ -14,6 +14,7 @@ import com.github.catvod.spider.LWCL;
 import com.github.catvod.spider.MiSou;
 import com.github.catvod.spider.PanSearch;
 import com.github.catvod.spider.PiKa;
+import com.github.catvod.spider.RBYQ;
 import com.github.catvod.spider.ReBang;
 import com.github.catvod.spider.WJCL;
 import com.github.catvod.spider.Wogg;
@@ -72,6 +73,7 @@ public class MainActivity extends Activity {
             spider = new LWCL();
             spider = new Yiove();
             spider = new Wogg();
+            spider = new RBYQ();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -115,7 +117,8 @@ public class MainActivity extends Activity {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/0a9ea215a7a0")));
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("md5hash=531f39dcf4afe8664f910af1541a718a52ab390683ed25c5c232ad27997887e6&sjk=2")));
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/!iyQa")));
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/voddetail/81270.html")));//玩偶哥哥
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/voddetail/81270.html")));//玩偶哥哥
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("cm3q9ogxc3bg8bdpv8mgyq8k6")));//肉不要钱
 
         } catch (Throwable e) {
             e.printStackTrace();
