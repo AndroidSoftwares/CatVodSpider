@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ValueCallback;
@@ -12,6 +13,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.github.catvod.spider.Init;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -208,5 +211,9 @@ public class Util {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = dateFormat.format(date);
         return dateString;
+    }
+    public static String base64Decode(String str) {
+        if(StringUtils.isBlank(str)) return "";
+        return new String(android.util.Base64.decode(str, Base64.DEFAULT));
     }
 }
