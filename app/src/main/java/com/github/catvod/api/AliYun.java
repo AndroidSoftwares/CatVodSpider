@@ -32,7 +32,7 @@ import com.github.catvod.crawler.SpiderDebug;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.net.OkResult;
 import com.github.catvod.spider.Init;
-import com.github.catvod.spider.Proxy;
+import com.github.catvod.spider.unavailable.Proxy;
 import com.github.catvod.utils.Json;
 import com.github.catvod.utils.Notify;
 import com.github.catvod.utils.Path;

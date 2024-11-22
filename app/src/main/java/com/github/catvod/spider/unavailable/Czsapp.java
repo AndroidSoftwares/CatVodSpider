@@ -1,4 +1,4 @@
-package com.github.catvod.spider;
+package com.github.catvod.spider.unavailable;
 
 import android.text.TextUtils;
 import android.util.Base64;

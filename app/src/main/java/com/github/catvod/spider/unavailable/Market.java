@@ -1,4 +1,4 @@
-package com.github.catvod.spider;
+package com.github.catvod.spider.unavailable;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,6 +10,7 @@ import com.github.catvod.bean.market.Data;
 import com.github.catvod.bean.market.Item;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
+import com.github.catvod.spider.Init;
 import com.github.catvod.utils.FileUtil;
 import com.github.catvod.utils.Path;
 import com.github.catvod.utils.Util;

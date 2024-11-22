@@ -4,7 +4,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 
 import com.github.catvod.net.OkHttp;
-import com.github.catvod.spider.Proxy;
+import com.github.catvod.spider.unavailable.Proxy;
 
 import org.json.JSONObject;
 
