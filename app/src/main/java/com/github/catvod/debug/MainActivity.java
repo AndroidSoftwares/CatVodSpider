@@ -10,7 +10,10 @@ import com.github.catvod.spider.CLPH;
 import com.github.catvod.spider.CLWQCL;
 import com.github.catvod.spider.CLXF;
 import com.github.catvod.spider.CiLiKu;
-import com.github.catvod.spider.Czsapp;
+import com.github.catvod.spider.WPKKB;
+import com.github.catvod.spider.MusicWM;
+import com.github.catvod.spider.WPMogg;
+import com.github.catvod.spider.unavailable.Czsapp;
 import com.github.catvod.spider.DyGang;
 import com.github.catvod.spider.Init;
 import com.github.catvod.spider.HunHePan;
@@ -83,6 +86,9 @@ public class MainActivity extends Activity {
             spider = new DyGang();
             spider = new Czsapp();
             spider = new WPYpPan();
+            spider = new WPKKB();
+            spider = new MusicWM();
+            spider = new WPMogg();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -129,7 +135,10 @@ public class MainActivity extends Activity {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/voddetail/81270.html")));//玩偶哥哥
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("cm3q9ogxc3bg8bdpv8mgyq8k6")));//肉不要钱
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("http://www.xpiaohua.com/column/juqing/20241119/66623.html")));//新飘花
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://www.yppan.com/archives/50624")));//新飘花
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://www.yppan.com/archives/50624")));//新飘花
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://www.kuakeba.top/39200.html")));//夸克吧
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("http://www.mvmp3.com/mp3/8909e1809908cd8e3bf6cf85d98b93f0.html")));//无名音乐网
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/index.php/vod/detail/id/150.html")));//木偶哥哥
 
         } catch (Throwable e) {
             e.printStackTrace();
@@ -146,7 +155,7 @@ public class MainActivity extends Activity {
 
     public void searchContent() {
         try {
-            Logger.t("searchContent").d(spider.searchContent("仙逆", false));
+            Logger.t("searchContent").d(spider.searchContent("稻香", false));
 //            Logger.t("searchContent").d(spider.searchContent("最后", false));
 //            Logger.t("searchContent").d(spider.searchContent("漫威", false, "1"));
         } catch (Throwable e) {
