@@ -1,4 +1,4 @@
-package com.github.catvod.spider;
+package com.github.catvod.spider.unavailable;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,7 +13,6 @@ import com.github.catvod.bean.Result;
 import com.github.catvod.bean.Sub;
 import com.github.catvod.bean.Vod;
 import com.github.catvod.crawler.Spider;
-import com.github.catvod.spider.unavailable.Proxy;
 import com.github.catvod.utils.Image;
 import com.github.catvod.utils.Util;
 
