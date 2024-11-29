@@ -9,7 +9,9 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.spider.CLPH;
 import com.github.catvod.spider.CLWQCL;
 import com.github.catvod.spider.CLXF;
+import com.github.catvod.spider.CPSJTK;
 import com.github.catvod.spider.CiLiKu;
+import com.github.catvod.spider.Quark;
 import com.github.catvod.spider.WPKKB;
 import com.github.catvod.spider.MusicWM;
 import com.github.catvod.spider.WPMogg;
@@ -89,6 +91,8 @@ public class MainActivity extends Activity {
             spider = new WPKKB();
             spider = new MusicWM();
             spider = new WPMogg();
+            spider = new CPSJTK();
+            spider = new Quark();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -115,11 +119,12 @@ public class MainActivity extends Activity {
     public void categoryContent() {
         try {
             HashMap<String, String> extend = new HashMap<>();
-            extend.put("c", "19");
-            extend.put("year", "2024");
+//            extend.put("c", "19");
+//            extend.put("year", "2024");
 //            Logger.t("categoryContent").d(spider.categoryContent("3", "2", true, extend));
 //            Logger.t("categoryContent").d(spider.categoryContent("14", "2", true, extend));
-            Logger.t("categoryContent").d(spider.categoryContent("baidu?cache=true", "1", true, extend));
+//            Logger.t("categoryContent").d(spider.categoryContent("baidu?cache=true", "1", true, extend));
+            Logger.t("categoryContent").d(spider.categoryContent("饿了么", "1", true, extend));//聚推客
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -138,7 +143,9 @@ public class MainActivity extends Activity {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://www.yppan.com/archives/50624")));//新飘花
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://www.kuakeba.top/39200.html")));//夸克吧
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("http://www.mvmp3.com/mp3/8909e1809908cd8e3bf6cf85d98b93f0.html")));//无名音乐网
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/index.php/vod/detail/id/150.html")));//木偶哥哥
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/index.php/vod/detail/id/150.html")));//木偶哥哥
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("59")));//聚推客
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/00d3d5d8cbf2")));//聚推客
 
         } catch (Throwable e) {
             e.printStackTrace();
