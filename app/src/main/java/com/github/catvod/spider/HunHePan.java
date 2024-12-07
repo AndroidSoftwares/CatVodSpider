@@ -3,6 +3,7 @@ package com.github.catvod.spider;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.github.catvod.api.QuarkApi;
 import com.github.catvod.bean.Class;
 import com.github.catvod.bean.Filter;
 import com.github.catvod.bean.Result;
@@ -84,7 +85,12 @@ public class HunHePan extends Spider {
         List<String> playFrom = new ArrayList<>();
         List<String> playUrls = new ArrayList<>();
         playFrom.add("混合盘");
-        playUrls.add(ids.get(0));
+        if (ids.get(0).contains("quark")) {
+            playUrls.add(QuarkApi.get().getTransfer(ids.get(0)));
+        } else {
+            playUrls.add(ids.get(0));
+
+        }
         vod.setVodPlayUrl(TextUtils.join("$$$", playUrls));
         vod.setVodPlayFrom(TextUtils.join("$$$", playFrom));
         return Result.string(vod);

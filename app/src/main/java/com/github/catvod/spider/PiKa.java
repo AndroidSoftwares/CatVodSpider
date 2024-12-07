@@ -3,6 +3,7 @@ package com.github.catvod.spider;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.github.catvod.api.QuarkApi;
 import com.github.catvod.bean.Class;
 import com.github.catvod.bean.Result;
 import com.github.catvod.bean.Vod;
@@ -34,7 +35,16 @@ public class PiKa extends Spider {
         List<String> playUrls = new ArrayList<>();
         playFrom.add("皮卡");
         playUrls.add(ids.get(0));
-        vod.setVodPlayUrl(TextUtils.join("$$$", playUrls));
+
+        List<String> shareRealLinks = new ArrayList<>();
+        for (int i = 0; i < playUrls.size(); i++) {
+            if (playUrls.get(i).contains("quark")) {
+                shareRealLinks.add(QuarkApi.get().getTransfer(playUrls.get(i)));
+            } else {
+                shareRealLinks.add(playUrls.get(i));
+            }
+        }
+        vod.setVodPlayUrl(TextUtils.join("$$$", shareRealLinks));
         vod.setVodPlayFrom(TextUtils.join("$$$", playFrom));
         return Result.string(vod);
     }

@@ -2,6 +2,7 @@ package com.github.catvod.spider;
 
 import android.text.TextUtils;
 
+import com.github.catvod.api.QuarkApi;
 import com.github.catvod.bean.Class;
 import com.github.catvod.bean.Result;
 import com.github.catvod.bean.Vod;
@@ -66,7 +67,11 @@ public class WPRBYQ extends Spider {
         List<String> playFrom = new ArrayList<>();
         List<String> playUrls = new ArrayList<>();
         playFrom.add("肉不要钱");
-        playUrls.add(link);
+        if (link.contains("quark")) {
+            playUrls.add(QuarkApi.get().getTransfer(link));
+        } else {
+            playUrls.add(link);
+        }
         vod.setVodPlayUrl(TextUtils.join("$$$", playUrls));
         vod.setVodPlayFrom(TextUtils.join("$$$", playFrom));
         return Result.string(vod);

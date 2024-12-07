@@ -74,26 +74,32 @@ public class QuarkApi {
         return Path.tv("quark");
     }
 
-    public String getVod(ShareData shareData, String url ) throws Exception {
-        getShareToken(shareData);
-        List<Item> files = new ArrayList<>();
-        List<Map<String, Object>> listData = listFile(1, shareData, files, shareData.getShareId(), shareData.getFolderId(), 1);
-        if (listData.size() > 0){
-           //保存文件fileId
-            String fileId = save(shareData.getShareId(), saveFileIdCaches.get(shareData.getShareId()), (String) listData.get(0).get("fid"), (String) listData.get(0).get("share_fid_token"), true);
+    public String getTransfer(String url) throws Exception {
+        try {
+            ShareData shareData = getShareData(url);
+            getShareToken(shareData);
+            List<Item> files = new ArrayList<>();
+            List<Map<String, Object>> listData = listFile(1, shareData, files, shareData.getShareId(), shareData.getFolderId(), 1);
+            if (listData.size() > 0) {
+                //保存文件fileId
+                String fileId = save(shareData.getShareId(), saveFileIdCaches.get(shareData.getShareId()), (String) listData.get(0).get("fid"), (String) listData.get(0).get("share_fid_token"), true);
 
-            //分享获取share_id
-            String shareId = getShareIdByTaskId(fileId, (String) listData.get(0).get("file_name"));
-            //获取分享的URL
-            String shareUrl = getShareUrl(shareId);
+                //分享获取share_id
+                String shareId = getShareIdByTaskId(fileId, (String) listData.get(0).get("file_name"));
+                //获取分享的URL
+                String shareUrl = getShareUrl(shareId);
 
-            return shareUrl;
+                return shareUrl;
+            }
+
+        } catch (Exception e) {
+
+            return url;
         }
-
         return url;
     }
 
-    private String getShareUrl(String shareId)  throws Exception {
+    private String getShareUrl(String shareId) throws Exception {
 
         Map<String, Object> result = Json.parseSafe(api("share/password?" + this.pr, null, ImmutableMap.of("share_id", shareId), 0, "POST"), Map.class);
         if (result.get("data") != null && ((Map<Object, Object>) result.get("data")).get("share_url") != null) {
@@ -220,7 +226,6 @@ public class QuarkApi {
     }
 
 
-
     public static Integer findAllIndexes(List<String> arr, String value) {
 
         for (int i = 0; i < arr.size(); i++) {
@@ -300,7 +305,7 @@ public class QuarkApi {
         return null;
     }
 
-    private String getShareIdByTaskId( String fileId, String fileName) throws Exception {
+    private String getShareIdByTaskId(String fileId, String fileName) throws Exception {
 
         Map<String, Object> saveResult = Json.parseSafe(api("share?" + this.pr, null, ImmutableMap.of("fid_list", ImmutableList.of(fileId), "title", fileName, "url_type", 1, "expired_type", 1), 0, "POST"), Map.class);
         if (saveResult.get("data") != null && ((Map<Object, Object>) saveResult.get("data")).get("task_id") != null) {
@@ -363,8 +368,6 @@ public class QuarkApi {
             return value;
         }
     }
-
-
 
 
 }

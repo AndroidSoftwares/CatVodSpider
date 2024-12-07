@@ -2,6 +2,7 @@ package com.github.catvod.spider;
 
 import android.text.TextUtils;
 
+import com.github.catvod.api.QuarkApi;
 import com.github.catvod.bean.Class;
 import com.github.catvod.bean.Result;
 import com.github.catvod.bean.Vod;
@@ -92,11 +93,18 @@ public class WPMogg extends Spider {
         vod.setVodId(vodId);
 
         List<String> shareLinks = doc.select(".module-row-text").eachAttr("data-clipboard-text");
-
+        List<String> shareRealLinks = new ArrayList<>();
+        for (int i = 0; i < shareLinks.size(); i++) {
+            if (shareLinks.get(i).contains("quark")) {
+                shareRealLinks.add(QuarkApi.get().getTransfer(shareLinks.get(i)));
+            } else {
+                shareRealLinks.add(shareLinks.get(i));
+            }
+        }
         List<String> playFrom = new ArrayList<>();
         playFrom.add("肉不要钱");
         List<String> playUrls = new ArrayList<>();
-        playUrls.add(TextUtils.join("#", shareLinks));
+        playUrls.add(TextUtils.join("#", shareRealLinks));
         vod.setVodPlayUrl(TextUtils.join("$$$", playUrls));
         vod.setVodPlayFrom(TextUtils.join("$$$", playFrom));
         return Result.string(vod);

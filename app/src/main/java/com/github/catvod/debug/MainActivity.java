@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
             spider = new MusicWM();
             spider = new WPMogg();
             spider = new CPSJTK();
-            spider = new Quark();
+            spider = new HunHePan();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -145,7 +145,7 @@ public class MainActivity extends Activity {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("http://www.mvmp3.com/mp3/8909e1809908cd8e3bf6cf85d98b93f0.html")));//无名音乐网
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/index.php/vod/detail/id/150.html")));//木偶哥哥
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("59")));//聚推客
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/00d3d5d8cbf2")));//聚推客
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/45185024a561")));//聚推客
 
         } catch (Throwable e) {
             e.printStackTrace();

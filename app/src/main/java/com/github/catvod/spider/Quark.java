@@ -24,10 +24,7 @@ public class Quark extends Spider {
     public String detailContent(List<String> ids) throws Exception {
         String url = ids.get(0);
         try {
-
-            ShareData shareData = QuarkApi.get().getShareData(url);
-
-            return QuarkApi.get().getVod(shareData, url);
+            return QuarkApi.get().getTransfer(url);
         } catch (Exception e) {
             return url;
         }

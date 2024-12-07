@@ -2,9 +2,11 @@ package com.github.catvod.spider;
 
 import android.text.TextUtils;
 
+import com.github.catvod.api.QuarkApi;
 import com.github.catvod.bean.Class;
 import com.github.catvod.bean.Result;
 import com.github.catvod.bean.Vod;
+import com.github.catvod.bean.quark.ShareData;
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.Util;
@@ -107,7 +109,7 @@ public class WPKKB extends Spider {
         List<String> tags = new ArrayList<>();
         for (Element element : doc.select("article.article-content p a")) {
             if (element.attr("href").matches(patternQuark)) {
-                shareLinks.add(element.attr("href"));
+                shareLinks.add(QuarkApi.get().getTransfer(element.attr("href")));
             } else if (element.attr("href").contains("tag")) {
                 tags.add(element.attr("href"));
             }

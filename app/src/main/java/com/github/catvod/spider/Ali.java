@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.github.catvod.api.AliYun;
+import com.github.catvod.api.QuarkApi;
 import com.github.catvod.bean.Result;
 import com.github.catvod.bean.Vod;
 import com.github.catvod.crawler.Spider;
@@ -30,11 +31,19 @@ public class Ali extends Spider {
 
     @Override
     public String detailContent(List<String> ids) throws Exception {
-        String id = ids.get(0).trim();
-        Matcher matcher = pattern.matcher(id);
+        List<String> urls = new ArrayList<>();
+        for (String id : ids) {
+            if (id.contains("quark")) {
+                QuarkApi.get().getTransfer(id);
+            } else {
+                urls.add(id);
+            }
+        }
+//        String id = ids.get(0).trim();
+//        Matcher matcher = pattern.matcher(id);
         Vod vod = new Vod();
-        vod.setVodPlayFrom(TextUtils.join("$$$", ids));
-        vod.setVodPlayUrl(TextUtils.join("$$$", ids));
+        vod.setVodPlayFrom(TextUtils.join("$$$", urls));
+        vod.setVodPlayUrl(TextUtils.join("$$$", urls));
         return Result.string(vod);
 //        return matcher.find() ? Result.string(parseVod(matcher, id)) : "";
     }
