@@ -9,7 +9,12 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.spider.CLPH;
 import com.github.catvod.spider.CLWQCL;
 import com.github.catvod.spider.CLXF;
+import com.github.catvod.spider.CPSJD;
+import com.github.catvod.spider.CPSJDD;
 import com.github.catvod.spider.CPSJTK;
+import com.github.catvod.spider.CPSPDD;
+import com.github.catvod.spider.CPSTB;
+import com.github.catvod.spider.CPSWPH;
 import com.github.catvod.spider.CiLiKu;
 import com.github.catvod.spider.Quark;
 import com.github.catvod.spider.WPKKB;
@@ -93,6 +98,11 @@ public class MainActivity extends Activity {
             spider = new WPMogg();
             spider = new CPSJTK();
             spider = new HunHePan();
+            spider = new CPSTB();
+            spider = new CPSJD();
+            spider = new CPSWPH();
+            spider = new CPSJDD();
+            spider = new CPSPDD();
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -124,7 +134,9 @@ public class MainActivity extends Activity {
 //            Logger.t("categoryContent").d(spider.categoryContent("3", "2", true, extend));
 //            Logger.t("categoryContent").d(spider.categoryContent("14", "2", true, extend));
 //            Logger.t("categoryContent").d(spider.categoryContent("baidu?cache=true", "1", true, extend));
-            Logger.t("categoryContent").d(spider.categoryContent("饿了么", "1", true, extend));//聚推客
+//            Logger.t("categoryContent").d(spider.categoryContent("饿了么", "1", true, extend));//聚推客
+//            Logger.t("categoryContent").d(spider.categoryContent("jd_hot_rank", "1", true, extend));//好单库
+            Logger.t("categoryContent").d(spider.categoryContent("80", "1", true, extend));//好单库
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -145,7 +157,12 @@ public class MainActivity extends Activity {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("http://www.mvmp3.com/mp3/8909e1809908cd8e3bf6cf85d98b93f0.html")));//无名音乐网
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("/index.php/vod/detail/id/150.html")));//木偶哥哥
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("59")));//聚推客
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/45185024a561")));//聚推客
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/45185024a561")));//聚推客
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("W54J73KTot2eVPOqmjUavjuVUa-prmQekaTRYk2WRo3TjY")));//好单库 淘宝
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("JCiqFPLfvwVmvrTaYvFHVmF2_3JKSTo2fXvXFsXA02W")));//好单库京东
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("6920495771333183364")));//好单库唯品会
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("qu2SOnIJZrRAnxQFdsWmBije_3sdbArBWVZUpNzGANv")));//ms
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("E9H284OUsXVGaAwBweLeLVIu09Fv9dGbhA_JQUHMWBpGv")));//ms
 
         } catch (Throwable e) {
             e.printStackTrace();
