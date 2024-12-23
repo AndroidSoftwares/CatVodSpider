@@ -75,27 +75,27 @@ public class QuarkApi {
     }
 
     public String getTransfer(String url) throws Exception {
-        try {
-            ShareData shareData = getShareData(url);
-            getShareToken(shareData);
-            List<Item> files = new ArrayList<>();
-            List<Map<String, Object>> listData = listFile(1, shareData, files, shareData.getShareId(), shareData.getFolderId(), 1);
-            if (listData.size() > 0) {
-                //保存文件fileId
-                String fileId = save(shareData.getShareId(), saveFileIdCaches.get(shareData.getShareId()), (String) listData.get(0).get("fid"), (String) listData.get(0).get("share_fid_token"), true);
-
-                //分享获取share_id
-                String shareId = getShareIdByTaskId(fileId, (String) listData.get(0).get("file_name"));
-                //获取分享的URL
-                String shareUrl = getShareUrl(shareId);
-
-                return shareUrl;
-            }
-
-        } catch (Exception e) {
-
-            return url;
-        }
+//        try {
+//            ShareData shareData = getShareData(url);
+//            getShareToken(shareData);
+//            List<Item> files = new ArrayList<>();
+//            List<Map<String, Object>> listData = listFile(1, shareData, files, shareData.getShareId(), shareData.getFolderId(), 1);
+//            if (listData.size() > 0) {
+//                //保存文件fileId
+//                String fileId = save(shareData.getShareId(), saveFileIdCaches.get(shareData.getShareId()), (String) listData.get(0).get("fid"), (String) listData.get(0).get("share_fid_token"), true);
+//
+//                //分享获取share_id
+//                String shareId = getShareIdByTaskId(fileId, (String) listData.get(0).get("file_name"));
+//                //获取分享的URL
+//                String shareUrl = getShareUrl(shareId);
+//
+//                return shareUrl;
+//            }
+//
+//        } catch (Exception e) {
+//
+//            return url;
+//        }
         return url;
     }
 

@@ -97,12 +97,13 @@ public class MainActivity extends Activity {
             spider = new MusicWM();
             spider = new WPMogg();
             spider = new CPSJTK();
-            spider = new HunHePan();
             spider = new CPSTB();
             spider = new CPSJD();
             spider = new CPSWPH();
             spider = new CPSJDD();
             spider = new CPSPDD();
+            spider = new HunHePan();
+
 //            spider = new Zhaozy();
 //            spider.init(this, "影視天下第一$$$test2$$$test2");
         } catch (Throwable e) {
@@ -162,7 +163,8 @@ public class MainActivity extends Activity {
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("JCiqFPLfvwVmvrTaYvFHVmF2_3JKSTo2fXvXFsXA02W")));//好单库京东
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("6920495771333183364")));//好单库唯品会
 //            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("qu2SOnIJZrRAnxQFdsWmBije_3sdbArBWVZUpNzGANv")));//ms
-            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("E9H284OUsXVGaAwBweLeLVIu09Fv9dGbhA_JQUHMWBpGv")));//ms
+//            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("E9H284OUsXVGaAwBweLeLVIu09Fv9dGbhA_JQUHMWBpGv")));//ms
+            Logger.t("detailContent").d(spider.detailContent(Arrays.asList("https://pan.quark.cn/s/5c3f10f1c797")));//ms
 
         } catch (Throwable e) {
             e.printStackTrace();
