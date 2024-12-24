@@ -118,7 +118,26 @@ public class HunHePan extends Spider {
         OkResult json = OkHttp.post(apiSearchContent, new Gson().toJson(params), getHeader());
         JSONArray jsonArray = new JSONObject(json.getBody()).getJSONObject("data").getJSONArray("list");
         for (int i = 0; i < jsonArray.length(); i++) {
-            list.add(new Vod(jsonArray.getJSONObject(i).getString("link"), jsonArray.getJSONObject(i).getString("disk_name").replace("<em>", "").replace("</em>", ""), "", jsonArray.getJSONObject(i).getString("disk_type") + "  " + jsonArray.getJSONObject(i).getString("update_time")));
+            if (!jsonArray.getJSONObject(i).getString("link").contains("tb.cn")){
+
+               String disk_type = jsonArray.getJSONObject(i).getString("disk_type");
+               String remarks = disk_type;
+                if (disk_type.equals("UC")){
+                    remarks = "UC网盘";
+                } else if (disk_type.equals("QUARK")) {
+                    remarks = "夸克网盘";
+                } else if (disk_type.equals("XUNLEI")){
+                    remarks = "迅雷网盘";
+                } else if (disk_type.equals("ALY")){
+                    remarks = "阿里云盘";
+                } else if (disk_type.equals("BDY")){
+                    remarks = "百度云";
+                }
+                String time = jsonArray.getJSONObject(i).getString("update_time");
+                if (time.contains("T")) time = time.split("T")[0];
+
+                list.add(new Vod(jsonArray.getJSONObject(i).getString("link"), jsonArray.getJSONObject(i).getString("disk_name").replace("<em>", "").replace("</em>", ""), "", remarks + "  " + time));
+            }
         }
         return Result.string(list);
     }

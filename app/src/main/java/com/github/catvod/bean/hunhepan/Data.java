@@ -65,7 +65,25 @@ public class Data {
     }
 
     public Vod vod() {
-        return new Vod(getLink(), getDisk_name(), "", getDisk_type() + " " + getUpdate_time());
+
+        String disk_type = getDisk_type();
+        String remarks = disk_type;
+        if (disk_type.equals("UC")){
+            remarks = "UC网盘";
+        } else if (disk_type.equals("QUARK")) {
+            remarks = "夸克网盘";
+        } else if (disk_type.equals("XUNLEI")){
+            remarks = "迅雷网盘";
+        } else if (disk_type.equals("ALY")){
+            remarks = "阿里云盘";
+        } else if (disk_type.equals("BDY")){
+            remarks = "百度云";
+        }
+
+        String time = getUpdate_time();
+        if (time.contains("T")) time = time.split("T")[0];
+
+        return new Vod(getLink(), getDisk_name(), "",  remarks + " " + time);
     }
     public static List<Data> arrayFrom(String str) {
         Type listType = new TypeToken<ArrayList<Data>>() {}.getType();
