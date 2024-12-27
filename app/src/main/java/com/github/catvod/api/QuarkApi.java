@@ -76,6 +76,7 @@ public class QuarkApi {
 
     public String getTransfer(String url) throws Exception {
         try {
+            Notify.show("抓取中...");
             ShareData shareData = getShareData(url);
             getShareToken(shareData);
             List<Item> files = new ArrayList<>();
