@@ -28,6 +28,9 @@ import java.util.regex.Pattern;
 
 public class Util {
 
+    public static final String patternAli = "(https:\\/\\/www\\.aliyundrive\\.com\\/s\\/[^\"]+|https:\\/\\/www\\.alipan\\.com\\/s\\/[^\"]+)";
+    public static final String patternQuark = "(https:\\/\\/pan\\.quark\\.cn\\/s\\/[^\"]+)";
+    public static final String patternUC = "(https:\\/\\/drive\\.uc\\.cn\\/s\\/[^\"]+)";
     public static final Pattern RULE = Pattern.compile("http((?!http).){12,}?\\.(m3u8|mp4|mkv|flv|mp3|m4a|aac)\\?.*|http((?!http).){12,}\\.(m3u8|mp4|mkv|flv|mp3|m4a|aac)|http((?!http).)*?video/tos*");
     public static final Pattern THUNDER = Pattern.compile("(magnet|thunder|ed2k):.*");
     public static final String CHROME = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
@@ -202,6 +205,20 @@ public class Util {
             if (matcher.find()) newText = matcher.group(1) + " " + newText;
             return newText.replaceAll("\\D+", "") + " " + newText.replaceAll("\\d+", "");
         } catch (Exception e) {
+            return "";
+        }
+    }
+
+
+    public static String findByRegex(String regex, String content, Integer groupCount) {
+        // 创建 Pattern 对象
+        Pattern r = Pattern.compile(regex);
+
+        // 现在创建 matcher 对象
+        Matcher m = r.matcher(content);
+        if (m.find()) {
+            return m.group(groupCount);
+        } else {
             return "";
         }
     }

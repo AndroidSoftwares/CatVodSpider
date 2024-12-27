@@ -40,6 +40,11 @@ android {
 }
 
 dependencies {
+    testImplementation 'junit:junit:4.12'
+    // Optional -- Mockito framework（可选，用于模拟一些依赖对象，以达到隔离依赖的效果）
+    testImplementation 'org.mockito:mockito-core:5.12.0'
+    testImplementation "org.robolectric:robolectric:4.13"
+
     implementation 'com.github.thegrizzlylabs:sardine-android:0.9'
     implementation 'wang.harlon.quickjs:wrapper-android:0.21.1'
     implementation 'com.squareup.okhttp3:okhttp:3.12.13'

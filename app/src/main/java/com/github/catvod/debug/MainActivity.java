@@ -20,6 +20,7 @@ import com.github.catvod.spider.Quark;
 import com.github.catvod.spider.WPKKB;
 import com.github.catvod.spider.MusicWM;
 import com.github.catvod.spider.WPMogg;
+import com.github.catvod.spider.WPYunPanBa;
 import com.github.catvod.spider.unavailable.Czsapp;
 import com.github.catvod.spider.DyGang;
 import com.github.catvod.spider.Init;
@@ -102,6 +103,7 @@ public class MainActivity extends Activity {
             spider = new CPSWPH();
             spider = new CPSJDD();
             spider = new CPSPDD();
+            spider = new WPYunPanBa();
             spider = new HunHePan();
 
 //            spider = new Zhaozy();

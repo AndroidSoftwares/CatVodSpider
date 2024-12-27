@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 public class QuarkApi {
     private String apiUrl = "https://drive-pc.quark.cn/1/clouddrive/";
-    private String cookie = "_UP_A4A_11_=wb96715131b647a286052721c6c2e0cc; __kps=AAS8VpCqfjL6kTDBlhdqpnDA; __ktd=4mONQbC5L0jMUQLyLu3o2A==; __uid=AAS8VpCqfjL6kTDBlhdqpnDA; b-user-id=276d77f2-d01c-991c-91c8-665506c8dcf2; CwsSessionId=c4562d46-dab9-45fa-8040-70b8ec4d1322; xlly_s=1; __pus=1a44a39c28e8cc0a298a5fcd5ad95428AAQ70pIV/CZTHZ+M0epODK1KbOg0u/Hly8fy4e+aCuw7t/JRSvYzGWWsTH97G9Nd/+s++viZqoEJr2pJGVhx5iWN; __kp=2fc3d410-b5d1-11ef-bd93-519291badcfc; isg=BAUFGk-4ztIsvesYM_rgjvpDFEE_wrlUZWolzAdu4jx_ni4Q2BE5JHE9qMJo3tEM; tfstk=furtUbiON6fi84ppJE_nighz10W3Soea95yWmjcMlWFL3S3mlVDiDqNstl0mffVpdYMcQOlX5qdIFAObfcNcDjwrThVc7qxvQkFJmhfN7-txmm1lZgjuQOoqc_bzsknyQxDjGIOml2TICnoFdgjuQR9iCT2CqlY3tNGsGmgs5pOITxD6fSg1AeGE3xOshh6dpxlBfAgscXwI3AhX1SifpJGEhbrpjjWqGnUDN2ev1BXYVuqKB2_3TXN4_tDmWbws9_1LvIgtNRGpc_Y9ykhxTu1hJJPz55DUMgCK0WzbGxFBOs0ahyFKB5fJgjqaIoHUBN1TpDGThqnJhGwKXf37XWv6j7wLhz0LxTsrXcG_ocyDe12LX52av-vXRcngJ4EtVgRsiy28DxEVgMF8UkPKd7sA1gW7queTmQDEvF6dpE8q5vzZI0FvgvL8TvhlKWL2u2vSpbXdpE8q5vkKZ90puEuHF; __puus=2829b4e5b4b5d4adf15741c85f5a24d5AAReo3GIwaem10N9SWowI8VIo6gh9HQaXp2iiCPAzRqxzqg3KBxbgsnpyY0uDMYpFV/M5DJR3G4PbCKdNAgFtmpEFXoxUU2mfpI8CWuMnVXt/6xOV1nZZgZLf5NzMj/n52n//5x8HrO5dBrDkQAqXIlG9zgEkzwTJyDJfnhl38VsgYEewyf/nJ32xVJQa5aQZkmf+sFZfm4GT2Y9s/Fe3Tf8";
+    private String cookie = "_UP_A4A_11_=wb96715131b647a286052721c6c2e0cc; b-user-id=276d77f2-d01c-991c-91c8-665506c8dcf2; CwsSessionId=c4562d46-dab9-45fa-8040-70b8ec4d1322; __sdid=AAQP1F8dY1bP7P0G84VfjjVqdLvkG2Toua4uabz+jei1XLLrge4eqbmLBFUrNffnJny9KG48mJOzByMdAeLA021tHGALbyEO5PW0yWOPkEEoEQ==; _UP_D_=pc; __kps=AAQJrRbWmXFnvjAYj/213Ogl; __ktd=Vv3vknjC7f8vYDhdBoxfaQ==; __uid=AAQJrRbWmXFnvjAYj/213Ogl; xlly_s=1; __pus=0f98328d512fd3bde20e07252a43ce14AATNbZo+9+QjwBLtXVnfzI7Li4spahmMsxiCM3Ha320fpKK0TfHqYcCUlwqxzoRNTFkuUDSHDhMG67cTUOzC3GQL; __kp=0422d5c0-c370-11ef-9017-e10aa9908c95; isg=BAUFbP9hzulfZ-sYM_rgjvpDFEE_wrlUZWolzAdqMTxLnicQzhIOJLY9qMJo3tEM; tfstk=fiAmqWxfRKWb8UelrY5jd13_bZM-kr16_hFOX1IZUgS5XqT971PwXFCAQmT9qGSyjIpt5OryzwxObI3sm30MDFNO0idOsO-dVlujcOWGzNQn5rkjca7GWwKGCqsObGx97K3-9XLXl11NsDhK9OIB3xJGu-yq7g7FZOLOrXLXlzz0b2pr9lAGVCxNbhWVaz7F4ZP43h5yzNIzgNPV7uulVN5NuNWaaU7Fu5zV0h8rrNsPbbcociCPsQolhBdwuwUfOZXcj5IzsNAz9tseugVZYBQ0bM8Vq5PNc04H7UYxmWTRGBthJnhziHYBN3byYfml139wbNxrOlCXpnOCEnHUaU5c49SyToyV-sjcLIWr1qT5QLAlMIo_dULl09fJeYiABsxDdM6qF0tMriKwiTrm2GppyIWkY0FkfOvBWNxmiS-F4mezLbd81-c6rRw13a_lv-NCh214xP8Kr42FYt75lodtrRSN3a_bq40uLeWVPZZA.; __puus=b082b2a7623b44478da0664ea785caafAATrKuD6eqTxnoESfyh8a9UskB5xq+PdbiaWlTebxRxwz4yeRipMcgV5nIAeKTHAlxgTWz4BhFLR0dIxiNeFcHaDswSUJaam48+abw373cgPG7S9P1LZ5U08pT7ZG05gJnv+rx1ljUa+8Sqg31LpfG17L9vwogLpSTTZ/YKWvdtCzZPPC6+9f+HNipZboh0aqSurE6y5sCbfQAbOVz1ekKPi";
     private Map<String, Map<String, Object>> shareTokenCache = new HashMap<>();
     private String pr = "pr=ucpro&fr=pc";
     private Map<String, String> saveFileIdCaches = new HashMap<>();
@@ -75,27 +75,27 @@ public class QuarkApi {
     }
 
     public String getTransfer(String url) throws Exception {
-//        try {
-//            ShareData shareData = getShareData(url);
-//            getShareToken(shareData);
-//            List<Item> files = new ArrayList<>();
-//            List<Map<String, Object>> listData = listFile(1, shareData, files, shareData.getShareId(), shareData.getFolderId(), 1);
-//            if (listData.size() > 0) {
-//                //保存文件fileId
-//                String fileId = save(shareData.getShareId(), saveFileIdCaches.get(shareData.getShareId()), (String) listData.get(0).get("fid"), (String) listData.get(0).get("share_fid_token"), true);
-//
-//                //分享获取share_id
-//                String shareId = getShareIdByTaskId(fileId, (String) listData.get(0).get("file_name"));
-//                //获取分享的URL
-//                String shareUrl = getShareUrl(shareId);
-//
-//                return shareUrl;
-//            }
-//
-//        } catch (Exception e) {
-//
-//            return url;
-//        }
+        try {
+            ShareData shareData = getShareData(url);
+            getShareToken(shareData);
+            List<Item> files = new ArrayList<>();
+            List<Map<String, Object>> listData = listFile(1, shareData, files, shareData.getShareId(), shareData.getFolderId(), 1);
+            if (listData.size() > 0) {
+                //保存文件fileId
+                String fileId = save(shareData.getShareId(), saveFileIdCaches.get(shareData.getShareId()), (String) listData.get(0).get("fid"), (String) listData.get(0).get("share_fid_token"), true);
+
+                //分享获取share_id
+                String shareId = getShareIdByTaskId(fileId, (String) listData.get(0).get("file_name"));
+                //获取分享的URL
+                String shareUrl = getShareUrl(shareId);
+
+                return shareUrl;
+            }
+
+        } catch (Exception e) {
+
+            return url;
+        }
         return url;
     }
 
